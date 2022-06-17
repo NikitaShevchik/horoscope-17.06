@@ -4,3 +4,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"); //font-family: 'Raleway', sans-serif;
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap"); //font-family: 'Pacifico', cursive;
 //SCSS
+.main {
+    font-family: 'Raleway', sans-serif;
+}
+.conteiner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.horoscope {
+		&__date {
+		}
+
+		&__result {
+		}
+}
+.date {
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+		&__input {
+            padding: 5px;
+            border: 1px solid #000;
+            font-size: 16px;
+		}
+        &__title{
+            font-size: 16px;
+            padding: 10px 0;
+        }
+}
+.result {
+    padding: 20px 10px;
+		&__title {
+            font-size: 25px;
+            text-align: center;
+		}
+
+		&__description {
+            padding: 20px 0;
+            font-size: 16px;
+		}
+
+		&__change {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+		}
+}
+.change {
+		&__item {
+            margin: 0 20px 0 0;
+            &:last-child{
+                margin: 0;
+            }
+		}
+
+		&__button {
+
+			&_1 {
+			}
+
+			&_2 {
+			}
+
+			&_3 {
+			}
+		}
+}
