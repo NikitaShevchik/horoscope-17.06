@@ -6,7 +6,7 @@ const radioToday = document.getElementById('today');
 const radioTommorow = document.getElementById('tommorow');
 const resultOutput = document.querySelector('.result__description');
 const resultTitle = document.querySelector('.result__title');
-
+const radioButtons = document.querySelector('.result__change');
 
 
 const horoscopes = [
@@ -24,19 +24,18 @@ const horoscopes = [
     { name: 'capricorn', today: 'День отлично подойдет для встреч с важными людьми и серьезных разговоров. Можно проводить их в неформальной обстановке, это никак не помешает вам взять верный тон, найти нужные слова и произвести самое благоприятное впечатление. Те, кто прежде вас недооценивал, поймут, как сильно ошибались. Но и для отдыха этот день благоприятен. Будет возможность сменить обстановку, вместе с друзьями посетить какие-то интересные места. Некоторые Козероги обнаружат у себя таланты, о которых прежде даже не подозревали.', yesterday: 'Вы многое успеете, если не будете пытаться справиться со всем самостоятельно. Обратитесь к проверенным союзникам: они будут рады вновь поддержать вас. Общие дела очень сблизят, отношения, которые прежде носили чисто деловой характер, станут менее формальными. Друзья и другие близкие люди сегодня могут чаще, чем обычно, вмешиваться в ваши дела. Поступать так они будут из самых лучших побуждений, но вам это все равно покажется довольно бестактным и неуместным. Старайтесь не сердиться. Лучше обо всем поговорить спокойно, чем ссориться.', tommorow: 'Старайтесь не переживать из-за пустяков, не думать слишком много о проблемах, которые пока не можете решить. Лучше отложить обсуждение важных вопросов, особенно если из-за них прежде возникали споры. Сосредоточьтесь на делах, которые вам действительно интересны, и настроение сразу улучшится. Отличные идеи появятся у вас во второй половине дня. В это же время станет понятно, нужно ли придерживаться старых планов или пришло время изменить их. Вероятны приятные встречи. Интуиция подскажет, как лучше вести себя с новыми знакомыми, чтобы завоевать их расположение.', title: 'Козерог' }, // month: '12, 01', date: '22, 19'
 ]
 
-function findTest(e) {
-    for (let i of horoscopes) {
-        // console.log(i.month)
-        if (i.month.includes(e)) {
-            console.log(i)
-        }
-    }
-}
+// function findTest(e) {
+//     for (let i of horoscopes) {
+//         // console.log(i.month)
+//         if (i.month.includes(e)) {
+//             console.log(i)
+//         }
+//     }
+// }
 
 function zodiacDisplay(m) {
     for (let i of horoscopes) {
         if (i.name.includes(m)) {
-            console.log(i)
             resultTitle.innerHTML = i.title
             resultOutput.innerHTML = i.today
         }
@@ -49,18 +48,18 @@ function zodiacDisplay(m) {
 // console.log(dayTest)
 // console.log(monthth)
 // console.log(typeof (monthth))
-
 // findTest(monthth)
 
 dateInput.addEventListener('keyup', function (e) {
     if (e.key == 'Enter') {
+        // radioToday.setAttribute("checked", "checked");
+        radioToday.checked = true;
         const inputMonth = Number(dateInput.value[3] + dateInput.value[4])
         const inputDay = Number(dateInput.value[0] + dateInput.value[1])
         // console.log(inputDay)
         // console.log(typeof (inputMonth))
         // console.log(inputMonth)
         // findTest(inputMonth)
-
         if (inputMonth == 12 && inputDay > 22 || inputMonth == 1 && inputDay < 20) {
             zodiacDisplay('capricorn')
         } else if (inputMonth == 1 && inputDay >= 20 || inputMonth == 2 && inputDay <= 18) {
@@ -86,6 +85,27 @@ dateInput.addEventListener('keyup', function (e) {
         } else if (inputMonth == 11 && inputDay >= 22 || inputMonth == 12 && inputDay <= 21) {
             zodiacDisplay('sagittarius')
         }
+    }
+})
 
+radioButtons.addEventListener('click', function () {
+    if (radioToday.checked) {
+        for (let i of horoscopes) {
+            if (i.title == resultTitle.innerHTML) {
+                resultOutput.innerHTML = i.today
+            }
+        }
+    } else if (radioYesterday.checked) {
+        for (let i of horoscopes) {
+            if (i.title == resultTitle.innerHTML) {
+                resultOutput.innerHTML = i.yesterday
+            }
+        }
+    } else if (radioTommorow.checked) {
+        for (let i of horoscopes) {
+            if (i.title == resultTitle.innerHTML) {
+                resultOutput.innerHTML = i.tommorow
+            }
+        }
     }
 })
